@@ -5,9 +5,9 @@ function matchPattern(inputLine, pattern) {
     pattern = pattern.slice(1, pattern.length)
   }else if(pattern[inputLine.length-1] === '$'){
     pattern = pattern.slice(0, pattern.length-1)
-  }else if(pattern.includes('+') || pattern.includes('?')){
+  }else if(pattern.includes('+') || pattern.includes('?') || pattern.includes('|')){
     const regExp = new RegExp(pattern);
-    
+
     return regExp.test(inputLine);
   }
   else if(pattern.includes('.'))
