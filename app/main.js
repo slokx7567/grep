@@ -8,6 +8,9 @@ function matchPattern(inputLine, pattern) {
   }else if(pattern.startsWith('[') && pattern.endsWith(']')) {
     const ptr = new RegExp(pattern)
     return ptr.test(inputLine);
+  }else if(!(pattern.startsWith('[') && pattern.endsWith(']'))) {
+    const ptr = new RegExp(pattern)
+    return ptr.test(inputLine);
   }
   else {
     throw new Error(`Unhandled pattern ${pattern}`);
