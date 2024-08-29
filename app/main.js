@@ -1,8 +1,10 @@
 function matchPattern(inputLine, pattern) {
   let regex = pattern.replace('\\d', '[0-9]').replace('\\w', '[0-9a-zA-Z^\]');
-  
+
   if (pattern[0] === '^') {
     pattern = pattern.slice(1, pattern.length)
+  }else if(pattern[inputLine.length-1] === '$'){
+    pattern = pattern.slice(0, pattern.length-1)
   }
   if (pattern.length === 1) {
     return inputLine.includes(pattern);
