@@ -7,9 +7,26 @@ function matchPattern(inputLine, pattern) {
     pattern = pattern.slice(0, pattern.length-1)
   }else if(pattern.includes('+') || pattern.includes('?')){
     const regExp = new RegExp(pattern);
-
+    
     return regExp.test(inputLine);
   }
+  else if(pattern.includes('.'))
+    {
+      if(pattern.length!==inputLine.length)
+      {
+        return false;
+      }
+      for(let i=0;i<pattern.length;i++)
+      {
+        if(pattern[i]==='.')
+        {
+          continue;
+        }
+        else if(pattern[i]!==inputLine[i])
+          return false;
+      }
+      return true;
+    }
   if (pattern.length === 1) {
     return inputLine.includes(pattern);
   } else {
