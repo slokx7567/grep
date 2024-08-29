@@ -1,6 +1,9 @@
 function matchPattern(inputLine, pattern) {
-  let regex = pattern.replace('\\d', '[0-9]').replace('\\w', '[0-9a-zA-Z]');
-
+  let regex = pattern.replace('\\d', '[0-9]').replace('\\w', '[0-9a-zA-Z^\]');
+  
+  if (pattern[0] === '^') {
+    pattern = pattern.slice(1, pattern.length)
+  }
   if (pattern.length === 1) {
     return inputLine.includes(pattern);
   } else {
